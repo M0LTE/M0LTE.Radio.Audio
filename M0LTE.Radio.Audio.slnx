@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/M0LTE.Radio.Audio/M0LTE.Radio.Audio.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/M0LTE.Radio.Audio.Tests/M0LTE.Radio.Audio.Tests.csproj" />
+  </Folder>
+</Solution>

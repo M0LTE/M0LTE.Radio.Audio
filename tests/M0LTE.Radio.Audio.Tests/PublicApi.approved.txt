@@ -1,0 +1,25 @@
+namespace M0LTE.Radio.Audio
+{
+    public interface IAudioInput
+    {
+        int SampleRate { get; }
+        int Read(System.Span<float> destination);
+    }
+    public interface IAudioOutput
+    {
+        int SampleRate { get; }
+        void Drain();
+        void Write(System.ReadOnlySpan<float> samples);
+    }
+    public interface IPttControl
+    {
+        void Key();
+        void Unkey();
+    }
+    public sealed class NullPtt : M0LTE.Radio.Audio.IPttControl
+    {
+        public NullPtt() { }
+        public void Key() { }
+        public void Unkey() { }
+    }
+}

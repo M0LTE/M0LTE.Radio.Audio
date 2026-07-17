@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>M0LTE.Radio.Audio</PackageId>
+    <Title>M0LTE.Radio.Audio — audio I/O + PTT abstractions</Title>
+    <Description>Minimal, dependency-free abstractions for driving a radio or sound device from a .NET modem/DSP: IAudioInput (blocking float-sample capture), IAudioOutput (blocking playback with drain), and IPttControl (transmitter keying), plus a NullPtt. Implement these to plug any sound card, SDR audio stream, or file into a modem the same way. The shared audio/PTT seam of the M0LTE.* radio packages.</Description>
+    <PackageTags>audio;ptt;radio;sdr;modem;abstractions;amateur-radio;ham-radio</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
