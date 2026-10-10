@@ -21,9 +21,15 @@ namespace M0LTE.Radio.Audio;
 /// radio retuned by another client) and a source that loses samples (an overrun, a dropped
 /// network packet) report it without a callback thread.</para>
 /// <para><b>Retuning.</b> When the centre frequency or the sample rate changes, the source ends
-/// the block at the last sample of the old tuning, and on the read that returns the first sample
-/// of the new tuning it updates <see cref="SampleRate"/> and <see cref="CentreFrequencyHz"/> and
-/// increments <see cref="TuningGeneration"/>. A block never spans a retune.</para>
+/// the block at the last sample it knows to be at the old tuning, and on the read that returns the
+/// first sample it knows to be at the new one it updates <see cref="SampleRate"/> and
+/// <see cref="CentreFrequencyHz"/> and increments <see cref="TuningGeneration"/>. A block never
+/// spans a retune the source knows the place of. A source that learns of a change only after the
+/// fact (an rtl_tcp-compatible server that switches profile unannounced) places the boundary as
+/// well as it can, and may discard samples whose tuning it cannot tell, counting them in
+/// <see cref="SamplesLost"/>. A source that knows only that something may have changed may
+/// increment <see cref="TuningGeneration"/> with both values unchanged; a consumer treats any
+/// increase as a fresh start.</para>
 /// <para><b>Lost samples.</b> When samples are lost, the source ends the block at the last sample
 /// before the gap, and on the read that returns the first sample after it, it adds the number of
 /// complex samples lost to <see cref="SamplesLost"/>. A block never spans a gap, and an increase
