@@ -11,6 +11,14 @@ namespace M0LTE.Radio.Audio
         void Drain();
         void Write(System.ReadOnlySpan<float> samples);
     }
+    public interface IIqSource
+    {
+        double CentreFrequencyHz { get; }
+        int SampleRate { get; }
+        long SamplesLost { get; }
+        long TuningGeneration { get; }
+        int Read(System.Span<float> interleaved);
+    }
     public interface IPttControl
     {
         void Key();
